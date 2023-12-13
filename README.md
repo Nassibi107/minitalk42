@@ -65,7 +65,41 @@ The purpose of this project is to code a small data exchange program using UNIX 
 ## Unix Processes
 
 ...
+Certainly! Here's a customized version of your text for a GitHub README:
 
-(Continue with the content as per the original text.)
--------
-This text provides an introduction to signals, which are standardized messages in POSIX-compliant operating systems used for triggering specific behaviors like quitting or error handling. Signals are a form of inter-process communication, interrupting the normal flow of executing processes when sent by the operating system. When a signal is received, the process can take action based on predefined behaviors or custom signal handlers. There are two types of signals: Maskable (can be changed or ignored by the user, e.g., Ctrl+C) and Non-Maskable (cannot be changed or ignored, usually for non-recoverable hardware errors). Signal handlers can be installed using system calls like signal(2) or sigaction(2). Signals are defined in the signal.h header file as macro constants, starting with "SIG" followed by a short description. It emphasizes using signal names instead of signal numbers for portability, as signal numbers can vary between systems. The text also mentions the macro NSIG, representing the total number of defined signals.
+---
+
+# Understanding Signals in Unix and POSIX
+
+In the realm of Unix and POSIX-compliant operating systems, a **signal** serves as a standardized notification message. These messages are dispatched asynchronously to running programs, informing them of specific events.
+
+## Sending a Signal
+
+Signals are transmitted by the operating system's kernel under two primary circumstances:
+
+1. **System-wide Events:** The kernel detects system-wide occurrences such as a divide-by-zero error or the completion of a child process.
+
+2. **Process Request:** A process can explicitly request the dispatch of a signal using the `kill` system call. Remarkably, a process can even signal itself using this mechanism.
+
+It's noteworthy that only a single pending signal of any particular type, such as `SIGCHLD`, can exist at a given time. Until this signal is received, the system refrains from sending additional `SIGCHLD` signals.
+
+## Receiving a Signal
+
+While the operating system appears to multitask, it fundamentally engages in rapid context switching, transitioning between processes seamlessly.
+
+### Signal Actions
+
+Upon receiving a signal, a process can respond in various ways:
+
+- **Terminate:** The process concludes abruptly.
+- **Core Dump:** The process terminates while generating a core dump—a file encapsulating its memory and registers for subsequent analysis.
+- **Ignore:** The signal is disregarded, and the program persists in its regular execution.
+- **Stop:** The process's execution is suspended until it receives the `SIGCONT` signal.
+
+For an in-depth exploration of sending and intercepting signals in C, delve into [Sending and Intercepting a Signal in C](https://www.codequoi.com/en/sending-and-intercepting-a-signal-in-c/).
+
+Explore the intricacies of signals and enhance your understanding of Unix and POSIX systems.
+
+---
+
+Feel free to adjust the formatting and structure as needed for your specific use case on GitHub.
