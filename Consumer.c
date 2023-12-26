@@ -6,11 +6,71 @@
 /*   By: ynassibi <ynassibi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:09:00 by ynassibi          #+#    #+#             */
-/*   Updated: 2023/12/26 14:37:34 by ynassibi         ###   ########.fr       */
+/*   Updated: 2023/12/26 19:49:28 by ynassibi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+
+void shape_one()
+{
+	ft_putstr("\n\t");
+	ft_putstr(CYAN);
+	ft_putstr("╔══════════════════════════════════════════════════╗");
+	ft_putstr(END);
+	ft_putstr("\n\t");
+	ft_putstr(CYAN);
+	ft_putstr("║                yassine nassibi 42                ║");
+	ft_putstr(END);
+	ft_putstr("\n\t");
+	ft_putstr(CYAN);
+	ft_putstr("╚══════════════════════════════════════════════════╝");
+	ft_putstr(END);
+}
+void shape_two()
+{
+	ft_putstr("\n\t");
+	ft_putstr(MAGENTA);
+	ft_putstr("███╗   ███╗██╗███╗ ██╗██╗████████╗ █████╗ ██╗     ██╗██╗");
+	ft_putstr(END);
+	ft_putstr("\n\t");
+	ft_putstr(MAGENTA);
+	ft_putstr("██╔████╔██║██║██╔██╗ ██║██║   ██║   ███████║██║     █████╔╝");
+	ft_putstr(END);
+	ft_putstr(" \n\t");
+	ft_putstr(MAGENTA);
+	ft_putstr("██║╚██╔╝██║██║██║╚██╗██║██║   ██║   ██╔══██║██║     ██╔═██╗");
+	ft_putstr(END);
+	ft_putstr(" \n\t");
+	ft_putstr(MAGENTA);
+	ft_putstr("██║ ╚═╝ ██║██║██║ ╚████║██║   ██║   ██║  ██║███████╗██║  ██╗");
+	ft_putstr(END);
+	ft_putstr("\n\t");
+	ft_putstr(MAGENTA);
+	ft_putstr("╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝");
+	ft_putstr(END);
+	ft_putstr("\n");
+	ft_putstr(RED);
+}
+void display_banner(int pid)
+{
+
+	shape_one();
+	shape_two();
+	ft_putstr("\tPID: ");
+	ft_putnub(pid);
+	ft_putstr(END);
+	ft_putstr("\t\t\t");
+	ft_putstr(MAGENTA);
+	ft_putstr("By: ynassibi");
+	ft_putstr(END);
+	ft_putstr("\n\t");
+	ft_putstr(MAGENTA);
+	ft_putstr("\t");
+	ft_putstr("⊱ ───────────── {•_•} ────────────── ⊰");
+	ft_putstr(END);
+	ft_putstr("\n\n");
+}
 
 void    pid_handler(siginfo_t *sig_infos, int *client_pid, int *actual_pid)
 {
@@ -85,9 +145,8 @@ int	main(void)
 	struct sigaction	sig_obj;
 	int		id;
 	char life ;
-
+    display_banner(getpid());
 	 life = 'k';
-	id = getpid();
 	ft_sigactions_set (&sig_obj);
 	//ft_printf("My Server's PID : %d\n", pid);
 	ft_putnub(id);
