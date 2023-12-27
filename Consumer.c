@@ -6,11 +6,43 @@
 /*   By: ynassibi <ynassibi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:09:00 by ynassibi          #+#    #+#             */
-/*   Updated: 2023/12/26 19:49:28 by ynassibi         ###   ########.fr       */
+/*   Updated: 2023/12/27 14:07:06 by ynassibi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
+
+void shape_three()
+{
+
+	ft_putstr(" \n\t");
+	ft_putstr(MAGENTA);
+	ft_putstr("██║ ╚═╝ ██║██║██║ ╚████║██║   ██║   ██║  ██║███████╗██║  ██╗");
+	ft_putstr(END);
+	ft_putstr("\n\t");
+	ft_putstr(MAGENTA);
+	ft_putstr("╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝");
+	ft_putstr(END);
+	ft_putstr("\n");
+	ft_putstr(RED);
+}
+
+void shape_two ()
+{
+	ft_putstr("\n\t");
+	ft_putstr(MAGENTA);
+	ft_putstr("███╗   ███╗██╗███╗ ██╗██╗████████╗ █████╗ ██╗     ██╗██╗");
+	ft_putstr(END);
+	ft_putstr("\n\t");
+	ft_putstr(MAGENTA);
+	ft_putstr("██╔████╔██║██║██╔██╗ ██║██║   ██║   ███████║██║     █████╔╝");
+	ft_putstr(END);
+	ft_putstr(" \n\t");
+	ft_putstr(MAGENTA);
+	ft_putstr("██║╚██╔╝██║██║██║╚██╗██║██║   ██║   ██╔══██║██║     ██╔═██╗");
+	ft_putstr(END);
+	shape_three();
+}
 
 void shape_one()
 {
@@ -26,37 +58,15 @@ void shape_one()
 	ft_putstr(CYAN);
 	ft_putstr("╚══════════════════════════════════════════════════╝");
 	ft_putstr(END);
+	ft_putstr("\t");
+	shape_two();
 }
-void shape_two()
-{
-	ft_putstr("\n\t");
-	ft_putstr(MAGENTA);
-	ft_putstr("███╗   ███╗██╗███╗ ██╗██╗████████╗ █████╗ ██╗     ██╗██╗");
-	ft_putstr(END);
-	ft_putstr("\n\t");
-	ft_putstr(MAGENTA);
-	ft_putstr("██╔████╔██║██║██╔██╗ ██║██║   ██║   ███████║██║     █████╔╝");
-	ft_putstr(END);
-	ft_putstr(" \n\t");
-	ft_putstr(MAGENTA);
-	ft_putstr("██║╚██╔╝██║██║██║╚██╗██║██║   ██║   ██╔══██║██║     ██╔═██╗");
-	ft_putstr(END);
-	ft_putstr(" \n\t");
-	ft_putstr(MAGENTA);
-	ft_putstr("██║ ╚═╝ ██║██║██║ ╚████║██║   ██║   ██║  ██║███████╗██║  ██╗");
-	ft_putstr(END);
-	ft_putstr("\n\t");
-	ft_putstr(MAGENTA);
-	ft_putstr("╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝");
-	ft_putstr(END);
-	ft_putstr("\n");
-	ft_putstr(RED);
-}
-void display_banner(int pid)
+
+
+void show_me(int pid)
 {
 
 	shape_one();
-	shape_two();
 	ft_putstr("\tPID: ");
 	ft_putnub(pid);
 	ft_putstr(END);
@@ -72,57 +82,65 @@ void display_banner(int pid)
 	ft_putstr("\n\n");
 }
 
-void    pid_handler(siginfo_t *sig_infos, int *client_pid, int *actual_pid)
+void    pid_handler( int *id_clt, int *id_cur,siginfo_t *info)
 {
-    if (!(*client_pid))
-        *client_pid = sig_infos->si_pid;
-    *actual_pid = sig_infos->si_pid;
+    if (*id_clt == 0)
+        *id_clt = info->si_pid;
+    *id_cur = info->si_pid;
 }
 
-void    bit_handler(int sig_v, int *index,char *carac)
-{
-    if (sig_v == SIGUSR2)
-        *carac |= (0x01 << *index);
-    else if (sig_v == SIGUSR1)
-        *carac |= (0x0 << *index);
-}
 
-void    caracter_handler(int c_pid,char *o, int *s_mssg, int *i)
+
+void    binding(int id,char *o, int *msg, int *i)
 {
-    if (*o == '\0')
+    if (!*o)
     {
-        //ft_printf("\n\033[32m%d Signal Recieved Successfully\033[0m\n", *s_mssg);
-        *s_mssg = 0x0;
-        kill(c_pid, SIGUSR1);
+		  ft_putstr(GREEN);
+		  ft_putstr("\nSignal Recieved Successfully\t{");
+        ft_putnub(*msg);
+		  ft_write('}');
+		  ft_putstr(END);
+		  ft_write('\n');
+        *msg = 0;
+        kill(id, SIGUSR1);
     }
-    *o = 0x0;
-    *i = 0x0;
+    *i = 0;
+    *o = 0;
+}
+void	Exchange(int sig, int *i,char *c)
+{
+	int n;
+	n = 1;
+    if (sig == SIGUSR1)
+        *c = *c | (!n << *i);
+    else if (sig == SIGUSR2)
+        *c = *c | (n << *i);
 }
 
 void    recieve_mssg(int sig, siginfo_t *sig_infos, void *nothing)
 {
     static int                msg;
     static int                id_clt;
-    static char    received_carac;
+    static char    key;
     static int                id_cur;
     static int                i;
 
     (void)nothing;
-    pid_handler(sig_infos, &id_clt, &id_cur);
+    pid_handler( &id_clt, &id_cur,sig_infos);
     if (id_clt != id_cur)
     {
         id_clt = sig_infos->si_pid;
-        received_carac = 0;
+        key = 0;
         i = 0;
         msg = 0;
     }
-    bit_handler(sig, &i, &received_carac);
+    Exchange(sig, &i, &key);
     i++;
     msg++;
     if (i == 8)
     {
-        ft_write (received_carac);
-        caracter_handler(id_clt, &received_carac, &msg, &i);
+        ft_write (key);
+        binding(id_clt, &key, &msg, &i);
     }
     usleep(100);
     kill(id_clt, SIGUSR2);
@@ -145,13 +163,11 @@ int	main(void)
 	struct sigaction	sig_obj;
 	int		id;
 	char life ;
-    display_banner(getpid());
+    show_me(getpid());
 	 life = 'k';
 	ft_sigactions_set (&sig_obj);
-	//ft_printf("My Server's PID : %d\n", pid);
 	ft_putnub(id);
-	//ft_printf("\033[90mWaiting for a message...\033[0m\n");
-	 ft_sigactions(SIGUSR1,SIGUSR2,&sig_obj);
+	ft_sigactions(SIGUSR1,SIGUSR2,&sig_obj);
 	while (life)
 		pause();
 	return (0);
