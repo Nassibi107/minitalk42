@@ -6,7 +6,7 @@
 /*   By: ynassibi <ynassibi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:48:08 by ynassibi          #+#    #+#             */
-/*   Updated: 2023/12/26 12:15:04 by ynassibi         ###   ########.fr       */
+/*   Updated: 2023/12/27 15:57:06 by ynassibi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_putnub(int n)
 		ft_write('_');
 	}
 	if (n < 10)
-      ft_write(n + 48);
+		ft_write(n + 48);
 	else
 	{
 		ft_putnub(n / 10);

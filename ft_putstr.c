@@ -6,7 +6,7 @@
 /*   By: ynassibi <ynassibi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:07:51 by ynassibi          #+#    #+#             */
-/*   Updated: 2023/12/26 11:12:20 by ynassibi         ###   ########.fr       */
+/*   Updated: 2023/12/27 15:57:23 by ynassibi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	ft_putstr(char *str)
 {
-	int i;
+	int	i;
+
 	i = 0;
-	while(str[i])
-		write(1,&str[i++],1);
+	while (str[i])
+		write(1, &str[i++], 1);
 }

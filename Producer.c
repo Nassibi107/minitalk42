@@ -6,39 +6,36 @@
 /*   By: ynassibi <ynassibi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 10:56:48 by ynassibi          #+#    #+#             */
-/*   Updated: 2023/12/26 12:37:36 by ynassibi         ###   ########.fr       */
+/*   Updated: 2023/12/27 15:49:53 by ynassibi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-
-
-int    main(int ac, char *av[])
+int	main(int ac, char *av[])
 {
-    int    id;
-    int    i;
-	 int t;
+	int	id;
+	int	i;
+	int	t;
 
-    if (ac == 3)
-    {
-        id = ft_atoi_base(av[1],10);
-        while (*av[2])
-        {
-				ft_ursignals(SIGUSR1,SIGUSR2,confirm);
-
-            	paket(id, *av[2]++);
-        }
-        paket(id, '\0');
-    }
-    else
-    {
+	if (ac == 3)
+	{
+		id = ft_atoi_base(av[1], 10);
+		while (*av[2])
+		{
+			ft_ursignals(SIGUSR1, SIGUSR2, confirm);
+			paket(id, *av[2]++);
+		}
+		paket(id, '\0');
+	}
+	else
+	{
 		ft_putstr(RED);
 		ft_putstr("•please respect this format •\t[pid] [msg]");
 		ft_putstr(END);
-        return _False;
-    }
-    return _True;
+		return (1);
+	}
+	return (0);
 }
 
 void	confirm(int sch)
@@ -55,12 +52,13 @@ void	confirm(int sch)
 		ft_putstr(END);
 		i++;
 	}
-
 }
 
 void	paket(pid_t pid, unsigned char c)
 {
-	int i = -1;
+	int	i;
+
+	i = -1;
 	while (++i < 8)
 	{
 		if ((c >> i) & 1)
@@ -71,7 +69,8 @@ void	paket(pid_t pid, unsigned char c)
 		usleep(100);
 	}
 }
-void ft_ursignals (int usr_1,int usr_2,void (*f)(int))
+
+void	ft_ursignals(int usr_1, int usr_2, void (*f)(int))
 {
 	signal(usr_2, f);
 	signal(usr_1, f);
