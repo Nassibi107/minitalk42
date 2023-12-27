@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_write.c                                         :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ynassibi <ynassibi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/26 12:13:02 by ynassibi          #+#    #+#             */
-/*   Updated: 2023/12/27 15:58:00 by ynassibi         ###   ########.fr       */
+/*   Created: 2023/12/26 11:07:51 by ynassibi          #+#    #+#             */
+/*   Updated: 2023/12/27 16:17:33 by ynassibi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "ft_tools.h"
 
-void	ft_write(char c)
+void	ft_putstr(char *str)
 {
-	write(1, &c, 1);
+	int	i;
+
+	i = 0;
+	while (str[i])
+		write(1, &str[i++], 1);
 }

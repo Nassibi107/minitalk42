@@ -1,34 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_write.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ynassibi <ynassibi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/26 11:48:08 by ynassibi          #+#    #+#             */
-/*   Updated: 2023/12/27 15:57:06 by ynassibi         ###   ########.fr       */
+/*   Created: 2023/12/26 12:13:02 by ynassibi          #+#    #+#             */
+/*   Updated: 2023/12/27 16:17:40 by ynassibi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "ft_tools.h"
 
-void	ft_putnub(int n)
+void	ft_write(char c)
 {
-	if (n == -2147483648)
-	{
-		write(1, "-2147483648", 11);
-		return ;
-	}
-	if (n < 0)
-	{
-		n *= -1;
-		ft_write('_');
-	}
-	if (n < 10)
-		ft_write(n + 48);
-	else
-	{
-		ft_putnub(n / 10);
-		ft_putnub(n % 10);
-	}
+	write(1, &c, 1);
 }

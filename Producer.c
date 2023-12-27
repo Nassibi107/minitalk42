@@ -6,7 +6,7 @@
 /*   By: ynassibi <ynassibi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 10:56:48 by ynassibi          #+#    #+#             */
-/*   Updated: 2023/12/27 15:49:53 by ynassibi         ###   ########.fr       */
+/*   Updated: 2023/12/27 16:31:48 by ynassibi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 int	main(int ac, char *av[])
 {
 	int	id;
-	int	i;
-	int	t;
 
 	if (ac == 3)
 	{

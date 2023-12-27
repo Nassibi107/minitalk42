@@ -6,7 +6,7 @@
 /*   By: ynassibi <ynassibi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:09:00 by ynassibi          #+#    #+#             */
-/*   Updated: 2023/12/27 15:40:39 by ynassibi         ###   ########.fr       */
+/*   Updated: 2023/12/27 16:32:08 by ynassibi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	main(void)
 	int					id;
 	char				life ;
 
+	id = 0;
 	show_me(getpid());
 	life = 'k';
 	ft_sigactions_set (&sig_obj);

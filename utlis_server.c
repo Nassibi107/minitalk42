@@ -6,7 +6,7 @@
 /*   By: ynassibi <ynassibi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/27 15:38:44 by ynassibi          #+#    #+#             */
-/*   Updated: 2023/12/27 15:41:13 by ynassibi         ###   ########.fr       */
+/*   Updated: 2023/12/27 16:36:32 by ynassibi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	recieve_mssg(int sig, siginfo_t *sig_infos, void *nothing)
 
 void	ft_sigactions(int usr_1, int usr_2, struct sigaction *sig)
 {
-	sigaction(SIGUSR1, sig, 0x0);
-	sigaction(SIGUSR2, sig, 0x0);
+	sigaction(usr_1, sig, 0x0);
+	sigaction(usr_2, sig, 0x0);
 }
 
 void	ft_sigactions_set(struct sigaction *obj)

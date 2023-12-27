@@ -6,9 +6,11 @@
 /*   By: ynassibi <ynassibi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:28:08 by ynassibi          #+#    #+#             */
-/*   Updated: 2023/12/27 15:56:54 by ynassibi         ###   ########.fr       */
+/*   Updated: 2023/12/27 16:16:06 by ynassibi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft_tools.h"
 
 static int	is_value(char c, int base)
 {
