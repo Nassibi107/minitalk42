@@ -6,7 +6,7 @@
 /*   By: ynassibi <ynassibi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 11:09:00 by ynassibi          #+#    #+#             */
-/*   Updated: 2023/12/27 16:32:08 by ynassibi         ###   ########.fr       */
+/*   Updated: 2023/12/27 17:50:47 by ynassibi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	main(void)
 	show_me(getpid());
 	life = 'k';
 	ft_sigactions_set (&sig_obj);
-	ft_putnub(id);
 	ft_sigactions(SIGUSR1, SIGUSR2, &sig_obj);
 	while (life)
 		pause();
